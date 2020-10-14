@@ -69,11 +69,12 @@ public class NativeEngine: NSObject, Engine, URLSessionDataDelegate, URLSessionW
                 @unknown default:
                     break
                 }
+                // Only recurse doRead on success
+                self?.doRead()
                 break
             case .failure(let error):
                 self?.broadcast(event: .error(error))
             }
-            self?.doRead()
         }
     }
 
