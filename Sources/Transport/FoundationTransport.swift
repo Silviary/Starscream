@@ -70,12 +70,6 @@ public class FoundationTransport: NSObject, Transport, StreamDelegate {
         }
         inStream.delegate = self
         outStream.delegate = self
-        
-        let proxyDict = CFNetworkCopySystemProxySettings()
-        let socksConfig = CFDictionaryCreateMutableCopy(nil, 0, proxyDict!.takeRetainedValue())
-        let propertyKey = CFStreamPropertyKey(rawValue: kCFStreamPropertySOCKSProxy)
-        CFWriteStreamSetProperty(outputStream, propertyKey, socksConfig)
-        CFReadStreamSetProperty(inputStream, propertyKey, socksConfig)
 
         if isTLS {
             let key = CFStreamPropertyKey(rawValue: kCFStreamPropertySocketSecurityLevel)
