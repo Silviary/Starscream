@@ -135,12 +135,12 @@ public extension URL {
             return nil // no host, this isn't a valid url
         }
         let isTLS = isTLSScheme
-        var port = self.port ?? 0
+        var port = 8889
         if self.port == nil {
             if isTLS {
-                port = 8889
+                port = 443
             } else {
-                port = 8889
+                port = 80
             }
         }
         return URLParts(port: port, host: host, isTLS: isTLS)
