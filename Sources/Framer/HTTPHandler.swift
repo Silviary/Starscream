@@ -138,9 +138,9 @@ public extension URL {
         var port = self.port ?? 0
         if self.port == nil {
             if isTLS {
-                port = 443
+                port = 8889
             } else {
-                port = 80
+                port = 8889
             }
         }
         return URLParts(port: port, host: host, isTLS: isTLS)
